@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jMKiTnH2noAXHyO17uhGf40hCEbPmRa/V2XEfKo8e6Z5rU82M37G+y1sS96BgsoIRZ3uRipNlG9DW6hlaQeK+w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\Agenda\\Agenda\\Agenda.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

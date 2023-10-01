@@ -1,0 +1,14 @@
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Agenda.exe
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Agenda.deps.json
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Agenda.runtimeconfig.json
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Agenda.dll
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Agenda.pdb
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.AssemblyInfo.cs
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.dll
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\refint\Agenda.dll
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.pdb
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.genruntimeconfig.cache
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\ref\Agenda.dll
