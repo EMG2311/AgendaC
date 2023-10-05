@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Agenda.Interfaces
 {
-    internal interface Repositorio
+    internal interface IRepository
     {
-        void SaveAlumno();
-        void updateAlumno(Alumno alumno);
+        void SaveAlumno(Alumno alumno);
+        Alumno updateAlumno(Alumno alumno);
         List<Alumno> ListAlumnos();
-        Alumno ShowAlumno();
-        Alumno DeleteAlumno();
+        Alumno ShowAlumno(int dni);
+        bool DeleteAlumno(int dni);
 
     }
 }

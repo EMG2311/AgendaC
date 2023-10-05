@@ -12,3 +12,6 @@ C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\refint\Agenda.dll
 C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.pdb
 C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.genruntimeconfig.cache
 C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\ref\Agenda.dll
+C:\Users\admin\source\repos\Agenda\Agenda\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Agenda\Agenda\obj\Debug\net6.0\Agenda.csproj.CopyComplete

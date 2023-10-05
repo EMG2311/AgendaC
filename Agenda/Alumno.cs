@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace Agenda
 {
-    internal class Alumno
+    public class Alumno
     {
-        private int DNI { get; set; }
-        private string Name { get; set; }
-        private string Surname { get; set; }
-        private string Street { get; set; }
-        private int Phone { get; set; }
-        private int CellularNumber { get; set; }
-        private int Age { get; set; }
-        private DateTime BirthDate{ get; set; }
-        private string IdFacebook { get; set; }
-        private string IdTwitter { get; set; }
-        private string IdInstagram { get; set; }
-        private string Mail { get; set; }
-        private bool Active { get; set; }
+        public int DNI { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Street { get; set; }
+        public int Phone { get; set; }
+        public long CellularNumber { get; set; }
+        public int Age { get; set; }
+        public DateTime BirthDate{ get; set; }
+        public string IdFacebook { get; set; }
+        public string IdTwitter { get; set; }
+        public string IdInstagram { get; set; }
+        public string Mail { get; set; }
+        public bool Active { get; set; }
 
-        public Alumno(){
-            Active = true;
-        }
+        public Alumno() {}
         public Alumno(int DNI, string Name, string Surname,string Street,int Phone,int CellularPhone, int Age ,DateTime BirthDate, string IdFacebook, string IdTwitter, string IdInstagram, string Mail)
         {
             this.DNI = DNI;
@@ -68,9 +66,9 @@ namespace Agenda
         {
             return this.Name;
         }
-        public void SetSurname(string Name)
+        public void SetSurname(string Surname)
         {
-            this.Name = Name;
+            this.Surname = Surname;
         }
         public string GetSurname()
         {
@@ -90,11 +88,11 @@ namespace Agenda
         }
         public int GetPhone()
         { return this.Phone;}
-        public void SetCellularNumber(int Number)
+        public void SetCellularNumber(long Number)
         {
             this.CellularNumber = Number;
         }
-        public int GetCellularNumber()
+        public long GetCellularNumber()
         {
            return this.CellularNumber;
         }
@@ -127,7 +125,7 @@ namespace Agenda
                 throw new ArgumentException();
             }
         }
-        public DateTime GetDateTime()
+        public DateTime GetBirthDate()
         {
             return this.BirthDate;
         }
