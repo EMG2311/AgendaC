@@ -112,7 +112,7 @@ namespace Agenda
         private Alumno ShowAlumno()
         {
             bool flag = true;
-            Presenter.ShowMessageCustom("Ingrese el DNI del estudiante que quiere buscar");
+            Presenter.ShowMessageCustom("Ingrese el DNI del estudiante");
             Alumno alumno = new Alumno();
             Reader.ReadDNI(alumno);
             try
@@ -280,7 +280,7 @@ namespace Agenda
                 }
                 if (alumnos.Count() == 0)
                 {
-                    Presenter.ShowMessageCustom("No se encontro ningun alumno para listar") -{ };
+                    Presenter.ShowMessageCustom("No se encontro ningun alumno para listar");
                 }
                 Reader.ReadString();
                 
