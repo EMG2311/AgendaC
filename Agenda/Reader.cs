@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Agenda
@@ -56,14 +57,14 @@ namespace Agenda
             return Date;
         }
 
-        public void ReadDNI(Alumno alumno)
+        public void ReadDNI(Student Student)
         {
             bool flag = true;
             do
             {
                 try
                 {
-                    alumno.SetDni(this.ReadInt());
+                    Student.SetDni(this.ReadInt());
                     flag = false;
                 }
                 catch (ArgumentException)
@@ -73,7 +74,7 @@ namespace Agenda
             } while (flag);
         }
 
-        public void ReadAge(Alumno alumno)
+        public void ReadAge(Student Student)
         {
             bool flag = true;
             do
@@ -81,7 +82,7 @@ namespace Agenda
                 try
                 {
                     Presenter.ShowMessageCustom("Ingrese la edad");
-                    alumno.SetAge(this.ReadInt());
+                    Student.SetAge(this.ReadInt());
                     flag = false;
                 }
                 catch (ArgumentException a)
@@ -91,35 +92,26 @@ namespace Agenda
             } while (flag);
         }
 
-        public void ReadPhone(Alumno alumno)
+ 
+
+        public void ReadCellularNumberPhone(Student Student)
         {
             bool FlagNum = true;
-            do
-            {
-                try
-                {
-                    Presenter.ShowMessageCustom("Ingrese el numero de telefono fijo");
-                    alumno.SetPhone(this.ReadInt());
-                    FlagNum = false;
-                }
-                catch (ArgumentException a)
-                {
-                    Presenter.ShowMessageCustom("No se ingreso un numero correcto");
-
-                }
-            } while (FlagNum);
-        }
-
-        public void ReadCellularNumber(Alumno alumno)
-        {
-            bool FlagNum = true;
-
+            string number;
+            Regex regex = new Regex("\\A[0-9]{7,10}\\z");
+            Match match;
             do
             {
                 try
                 {
                     Presenter.ShowMessageCustom("Ingrese el numero de celular");
-                    alumno.SetCellularNumber(this.ReadInt());
+                    number = this.ReadString();
+                    match = regex.Match(number);
+                    if (!match.Success)
+                    {
+                        throw new ArgumentException();
+                    } 
+                    Student.SetCellularNumber(number);
                     FlagNum = false;
                 }
                 catch (ArgumentException a)
@@ -130,7 +122,7 @@ namespace Agenda
             } while (FlagNum);
         }
 
-        public void ReadBirthDate(Alumno alumno)
+        public void ReadBirthDate(Student Student)
         {
             bool FlagDate = true;
             do
@@ -138,7 +130,7 @@ namespace Agenda
                 try
                 {
                     Presenter.ShowMessageCustom("Ingrese la fecha de nacimiento");
-                    alumno.SetBirthDate(this.ReadDate());
+                    Student.SetBirthDate(this.ReadDate());
                     FlagDate = false;
                 }
                 catch (ArgumentException a)

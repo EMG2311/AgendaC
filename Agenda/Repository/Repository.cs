@@ -19,14 +19,10 @@ namespace Agenda.Repository
             FilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Agenda.txt");
             TempFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Agenda.tmp");
         }
-        public bool DeleteAlumno(int dni)
-        {
-            return true;
-        }
 
-        public List<Alumno> ListAlumnos()
+        public List<Student> ListStudents()
         {
-            List<Alumno> alumnos = new List<Alumno>();
+            List<Student> Students = new List<Student>();
             try
             {
                 CheckFileExistence(FilePath);
@@ -35,9 +31,9 @@ namespace Agenda.Repository
                     string record = string.Empty;
                     while ((record = reader.ReadLine()) != null)
                     {
-                        Alumno alumno = JsonConvert.DeserializeObject<Alumno>(record);
-                        if (alumno.Active==true) {
-                            alumnos.Add(alumno);
+                        Student Student = JsonConvert.DeserializeObject<Student>(record);
+                        if (Student.Active==true) {
+                            Students.Add(Student);
                         }
                     }
 
@@ -49,14 +45,14 @@ namespace Agenda.Repository
                 throw new Exception();
             }
 
-            return alumnos;
+            return Students;
         }
 
-        public void SaveAlumno(Alumno student)
+        public void SaveStudent(Student student)
         {
-            if (ShowAlumno(student.DNI) == null || ShowAlumno(student.DNI).Active== false)
+            if (ShowStudent(student.DNI) == null || ShowStudent(student.DNI).Active== false)
             {
-                Alumno studentCreate = student;
+                Student studentCreate = student;
                 studentCreate.SetActive(true);
                 string studentString = JsonConvert.SerializeObject(studentCreate);
                 InsertRecord(studentString);
@@ -88,7 +84,7 @@ namespace Agenda.Repository
             return true;
         }
 
-        public Alumno ShowAlumno(int dni)
+        public Student ShowStudent(int dni)
         {
             try
             {
@@ -96,19 +92,19 @@ namespace Agenda.Repository
 
                 using (StreamReader reader = new StreamReader(FilePath))
                 {
-                    Alumno alumnoAux=new Alumno();
+                    Student StudentAux=new Student();
                     
                     string record = string.Empty;
                     while ((record = reader.ReadLine()) != null)
                     {
-                        Alumno alumno = JsonConvert.DeserializeObject<Alumno>(record);
-                        if (alumno.GetDNI()== dni)
+                        Student Student = JsonConvert.DeserializeObject<Student>(record);
+                        if (Student.GetDNI()== dni)
                         {
-                            alumnoAux = alumno;
+                            StudentAux = Student;
                         }
                     }
                     reader.Close();
-                    return alumnoAux;
+                    return StudentAux;
                 }
             }
             catch (Exception ex)
@@ -119,7 +115,7 @@ namespace Agenda.Repository
             
         }
 
-        public Alumno updateAlumno(Alumno alumno)
+        public Student updateStudent(Student Student)
         {
             using (StreamReader reader = new StreamReader(FilePath))
             {
@@ -129,11 +125,11 @@ namespace Agenda.Repository
                     while ((record = reader.ReadLine()) != null)
                 {
                     
-                        Alumno Alumno1 = JsonConvert.DeserializeObject<Alumno>(record);
+                        Student Student1 = JsonConvert.DeserializeObject<Student>(record);
 
-                        if (alumno.DNI == Alumno1.DNI && Alumno1.Active==true)
+                        if (Student.DNI == Student1.DNI && Student1.Active==true)
                         {
-                            string newRecord = JsonConvert.SerializeObject(alumno);
+                            string newRecord = JsonConvert.SerializeObject(Student);
                             writer.WriteLine(newRecord);
                         }
                         else
@@ -156,10 +152,10 @@ namespace Agenda.Repository
 
             }
 
-            return alumno;
+            return Student;
         }
 
-        public bool DeleteRecord(int dni)
+        public bool DeleteStudent(int dni)
         {
 
             using (StreamReader reader = new StreamReader(FilePath))
@@ -167,8 +163,8 @@ namespace Agenda.Repository
                 string record = string.Empty;
                 while ((record = reader.ReadLine()) != null)
                 {
-                    Alumno alumno = JsonConvert.DeserializeObject<Alumno>(record);
-                    if (alumno.DNI != dni)
+                    Student Student = JsonConvert.DeserializeObject<Student>(record);
+                    if (Student.DNI != dni)
                     {
                         using (StreamWriter writer = new StreamWriter(TempFilePath))
                         {

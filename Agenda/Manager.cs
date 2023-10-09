@@ -33,23 +33,23 @@ namespace Agenda
             switch (Option)
             {
                 case 1:
-                    this.CreateAlumno();
+                    this.CreateStudent();
                     Presenter.DeleteConsole();
                     break;
                 case 2:
-                    this.ShowAlumno();
+                    this.ShowStudent();
                     Presenter.DeleteConsole();
                     break;
                 case 3:
-                    this.UpdateAlumno();
+                    this.UpdateStudent();
                     Presenter.DeleteConsole();
                     break;
                 case 4:
-                    this.DeleteAlumno();
+                    this.DeleteStudent();
                     Presenter.DeleteConsole();
                     break;
                 case 5:
-                    this.ListAlumnos();
+                    this.ListStudents();
                     Presenter.DeleteConsole();
                     break;
                 case 6:
@@ -62,6 +62,7 @@ namespace Agenda
 
         private void Options()
         {
+           
             bool flagOption = true;
             do
             {
@@ -81,21 +82,22 @@ namespace Agenda
                 }
             } while (Option < 1 || Option > 6);
         }
-        private void CreateAlumno()
+
+        private void CreateStudent()
         {
             try
             {
-                Alumno alumno = new Alumno();
-                this.UploadAlumnoData(alumno);
+                Student Student = new Student();
+                this.UploadStudentData(Student);
                 try
                 {
-                    Repository.SaveAlumno(alumno);
+                    Repository.SaveStudent(Student);
                     Presenter.ShowMessageCustom(":::Se creo el usuario correctamente:::");
                     Presenter.ShowMessageCustom("");
                 }
                 catch (Exception ex)
                 {
-                    Presenter.ShowMessageCustom("El alumno ingresado ya existe");
+                    Presenter.ShowMessageCustom("El Student ingresado ya existe");
                     Reader.ReadString();
                 }
 
@@ -109,16 +111,16 @@ namespace Agenda
 
 
         }
-        private Alumno ShowAlumno()
+        private Student ShowStudent()
         {
             bool flag = true;
             Presenter.ShowMessageCustom("Ingrese el DNI del estudiante");
-            Alumno alumno = new Alumno();
-            Reader.ReadDNI(alumno);
+            Student Student = new Student();
+            Reader.ReadDNI(Student);
             try
             {
-                alumno = Repository.ShowAlumno(alumno.DNI);
-                if (alumno == null || alumno.Active==false)
+                Student = Repository.ShowStudent(Student.DNI);
+                if (Student == null || Student.Active==false)
                 {
                     Presenter.ShowMessageCustom("No se encontraron datos del alumno");
                     Reader.ReadString();
@@ -126,10 +128,10 @@ namespace Agenda
                 }
                 else
                 {
-                    Presenter.ShowStudent(alumno);
+                    Presenter.ShowStudent(Student);
                     Presenter.ShowMessageCustom("Presione enter para continuar");
                     Reader.ReadString();
-                    return alumno;
+                    return Student;
                 }
             }
             catch(Exception e)
@@ -139,10 +141,10 @@ namespace Agenda
             }
             
         }
-        private void UpdateAlumno() 
+        private void UpdateStudent() 
         {
-            Alumno alumno = ShowAlumno();
-            if(alumno== null)
+            Student Student = ShowStudent();
+            if(Student== null)
             {
                 return;
             }
@@ -154,57 +156,57 @@ namespace Agenda
                 {
                     case 1:
                         Presenter.ShowMessageCustom("Ingrese el nombre nuevo");
-                        alumno.SetName(Reader.ReadString());
+                        Student.SetName(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 2:
                         Presenter.ShowMessageCustom("Ingrese el apellido nuevo");
-                        alumno.SetSurname(Reader.ReadString());
+                        Student.SetSurname(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 3:
                         Presenter.ShowMessageCustom("Ingrese la calle nueva");
-                        alumno.SetStreet(Reader.ReadString());
+                        Student.SetStreet(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 4:
                         Presenter.ShowMessageCustom("Ingrese el telefono fijo nuevo");
-                        Reader.ReadPhone(alumno);
+                        Reader.ReadCellularNumberPhone(Student);
                         Presenter.DeleteConsole();
                         break;
                     case 5:
                         Presenter.ShowMessageCustom("Ingrese el celular nuevo");
-                        Reader.ReadCellularNumber(alumno);
+                        Reader.ReadCellularNumberPhone(Student);
                         Presenter.DeleteConsole();
                         break;
                     case 6:
                         Presenter.ShowMessageCustom("Ingrese la edad nuevo");
-                        Reader.ReadAge(alumno);
+                        Reader.ReadAge(Student);
                         Presenter.DeleteConsole();
                         break;
                     case 7:
                         Presenter.ShowMessageCustom("Ingrese la nueva fecha de nacimiento");
-                        Reader.ReadBirthDate(alumno);
+                        Reader.ReadBirthDate(Student);
                         Presenter.DeleteConsole();
                         break;
                     case 8:
                         Presenter.ShowMessageCustom("Ingrese el nuevo id facebook");
-                        alumno.SetIdFacebook(Reader.ReadString());
+                        Student.SetIdFacebook(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 9:
                         Presenter.ShowMessageCustom("Ingrese el nuevo id twitter");
-                        alumno.SetIdTwitter(Reader.ReadString());
+                        Student.SetIdTwitter(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 10:
                         Presenter.ShowMessageCustom("Ingrese el nuevo id instagram");
-                        alumno.SetIdInstagram(Reader.ReadString());
+                        Student.SetIdInstagram(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 11:
                         Presenter.ShowMessageCustom("Ingrese el mail nuevo");
-                        alumno.SetMail(Reader.ReadString());
+                        Student.SetMail(Reader.ReadString());
                         Presenter.DeleteConsole();
                         break;
                     case 12:
@@ -212,14 +214,15 @@ namespace Agenda
                         Presenter.DeleteConsole();
                         try
                         {
-                            Repository.updateAlumno(alumno);
+                            Repository.updateStudent(Student);
                         }catch(Exception e)
                         {
                             Presenter.ShowMessageCustom("Error inesperado al actualizar alumno");
                         }
                         return;
-                        
-
+                    default :
+                        flag = true;
+                        break;
 
                 }
             } while (flag);
@@ -229,7 +232,7 @@ namespace Agenda
 
         private int UpdateOptions()
         {
-            int option;
+            int option=0;
             Presenter.DeleteConsole();
             Presenter.ShowUpdateOptions();
             do
@@ -237,48 +240,50 @@ namespace Agenda
                 try
                 {
                     option = Reader.ReadInt();
+                    if (!(option > 0 && option < 13))
+                    {
+                        throw new ArgumentException();
+                    }
                 }
                 catch (ArgumentException)
                 {
-                    option = 12;
-                }
-                if (!(option>0 && option<13))
-                {
                     Presenter.ShowMessageCustom("Opcion incorrecta, ingrese nuevamente");
                 }
+               
             }while (!(option>0 && option<13));
             return option;
         }
-        private void DeleteAlumno()
+        private void DeleteStudent()
         {
-            Alumno alumno = ShowAlumno();
+            Student Student = ShowStudent();
             
-            if (alumno == null || alumno.Active== false)
+            if (Student == null || Student.Active== false)
             {
                 return;
             }
-            alumno.SetActive(false);
+            Student.SetActive(false);
             try
             {
-                Repository.updateAlumno(alumno);
-                Presenter.ShowMessageCustom("Alumno eliminado");
+                Presenter.ShowMessageCustom("Eliminando alumno: ");
+                Repository.updateStudent(Student);
+                Presenter.ShowMessageCustom("alumno eliminado");
             }catch(Exception e)
             {
                 Presenter.ShowMessageCustom("Error inesperado al borrar alumno");
             } 
 
         }
-        private void ListAlumnos()
+        private void ListStudents()
         {
             try
             {
-                List<Alumno> alumnos = Repository.ListAlumnos();
-                foreach (Alumno alumno in alumnos)
+                List<Student> Students = Repository.ListStudents();
+                foreach (Student Student in Students)
                 {
-                    Presenter.ShowStudent(alumno);
+                    Presenter.ShowStudent(Student);
                     Presenter.ShowMessageCustom("--------------------------------");
                 }
-                if (alumnos.Count() == 0)
+                if (Students.Count() == 0)
                 {
                     Presenter.ShowMessageCustom("No se encontro ningun alumno para listar");
                 }
@@ -292,46 +297,46 @@ namespace Agenda
         }
 
         /// <summary>
-        /// Metodo encargado de pedir y cargar los datos del alumno pasado por parametro
+        /// Metodo encargado de pedir y cargar los datos del Student pasado por parametro
         /// </summary>
-        /// <param name="alumno"></param>
+        /// <param name="Student"></param>
         /// <returns></returns>
-        private Alumno UploadAlumnoData(Alumno alumno) 
+        private Student UploadStudentData(Student Student) 
         {
             bool FlagDNI = true;
             bool FlagAge = true;
             bool FlagDate = true;
             bool FlagNum = true;
-            Presenter.ShowMessageCustom("::::Creando Alumno::::");
+            Presenter.ShowMessageCustom("::::Creando alumno::::");
             Presenter.ShowMessageCustom("");
             Presenter.ShowMessageCustom("Ingrese nombre");
-            alumno.SetName(Reader.ReadString());
+            Student.SetName(Reader.ReadString());
             Presenter.ShowMessageCustom("Ingresa el apellido");
-            alumno.SetSurname(Reader.ReadString());
+            Student.SetSurname(Reader.ReadString());
             Presenter.ShowMessageCustom("Ingrese el DNI");
-            Reader.ReadDNI(alumno);
+            Reader.ReadDNI(Student);
             Presenter.ShowMessageCustom("Ingrese la direccion");
-            alumno.SetStreet(Reader.ReadString());
-            Reader.ReadPhone(alumno);
-            Reader.ReadCellularNumber(alumno);
-            Reader.ReadAge(alumno);
-            Reader.ReadBirthDate(alumno);
+            Student.SetStreet(Reader.ReadString());
+            Reader.ReadCellularNumberPhone(Student);
+            Reader.ReadCellularNumberPhone(Student);
+            Reader.ReadAge(Student);
+            Reader.ReadBirthDate(Student);
             
             Presenter.ShowMessageCustom("Ingrese el IdFacebook");
-            alumno.SetIdFacebook(Reader.ReadString());
+            Student.SetIdFacebook(Reader.ReadString());
 
             Presenter.ShowMessageCustom("Ingrese el idTwitter");
-            alumno.SetIdTwitter(Reader.ReadString());
+            Student.SetIdTwitter(Reader.ReadString());
 
             Presenter.ShowMessageCustom("Ingrese el IdInstagram");
-            alumno.SetIdInstagram(Reader.ReadString());
+            Student.SetIdInstagram(Reader.ReadString());
 
             Presenter.ShowMessageCustom("Ingrese el mail");
-            alumno.SetMail(Reader.ReadString());
+            Student.SetMail(Reader.ReadString());
             Presenter.DeleteConsole();
 
-            alumno.SetActive(true);
-            return alumno;
+            Student.SetActive(true);
+            return Student;
         }
 
      }

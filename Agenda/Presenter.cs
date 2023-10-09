@@ -11,14 +11,14 @@ namespace Agenda
         public void PresentOptions()
         {
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine("||     Elije una opcion            ||");
-            Console.WriteLine("||                                 ||");
-            Console.WriteLine("||     1. Crear alumno             ||");
-            Console.WriteLine("||     2. Mostrar datos del alumno ||");
-            Console.WriteLine("||     3. Editar alumno            ||");
-            Console.WriteLine("||     4. Eliminar alumno          ||");
-            Console.WriteLine("||     5. Listar alumnos           ||");
-            Console.WriteLine("||     6. Salir del programa       ||");
+            Console.WriteLine("||     Elije una opcion             ||");
+            Console.WriteLine("||                                  ||");
+            Console.WriteLine("||     1. Crear alumno              ||");
+            Console.WriteLine("||     2. Mostrar datos del alumno  ||");
+            Console.WriteLine("||     3. Editar alumno             ||");
+            Console.WriteLine("||     4. Eliminar alumno           ||");
+            Console.WriteLine("||     5. Listar alumno             ||");
+            Console.WriteLine("||     6. Salir del programa        ||");
             Console.WriteLine("-------------------------------------"); ;
         }
         public void IncorrectOption()
@@ -33,21 +33,21 @@ namespace Agenda
             Console.Clear();
         }
 
-        public void ShowStudent(Alumno alumno)
+        public void ShowStudent(Student Student)
         {
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine("||      " +"DNI: "+ alumno.DNI);
-            Console.WriteLine("||      " +"Nombre: "+ alumno.Name);
-            Console.WriteLine("||      " +"Apellido: " + alumno.Surname);
-            Console.WriteLine("||      " +"Calle: "+ alumno.Street);
-            Console.WriteLine("||      " +"Phone: " + alumno.Phone);
-            Console.WriteLine("||      " + "Cellular: "+ alumno.CellularNumber);
-            Console.WriteLine("||      " + "Edad: "+ alumno.Age);
-            Console.WriteLine("||      " + "Fecha de nacimiento: "+ alumno.BirthDate);
-            Console.WriteLine("||      " + "Id Facebook:"+ alumno.IdFacebook);
-            Console.WriteLine("||      " + "Id twitter: "+ alumno.IdTwitter);
-            Console.WriteLine("||      " +"Id Instagram: " + alumno.IdInstagram);
-            Console.WriteLine("||      " + "Mail: "+ alumno.Mail);
+            Console.WriteLine("||      " +"DNI: "+ Student.DNI);
+            Console.WriteLine("||      " +"Nombre: "+ Student.Name);
+            Console.WriteLine("||      " +"Apellido: " + Student.Surname);
+            Console.WriteLine("||      " +"Calle: "+ Student.Street);
+            Console.WriteLine("||      " +"Phone: " + Student.Phone);
+            Console.WriteLine("||      " + "Cellular: "+ Student.CellularNumber);
+            Console.WriteLine("||      " + "Edad: "+ Student.Age);
+            Console.WriteLine("||      " + "Fecha de nacimiento: "+ Student.BirthDate);
+            Console.WriteLine("||      " + "Id Facebook:"+ Student.IdFacebook);
+            Console.WriteLine("||      " + "Id twitter: "+ Student.IdTwitter);
+            Console.WriteLine("||      " +"Id Instagram: " + Student.IdInstagram);
+            Console.WriteLine("||      " + "Mail: "+ Student.Mail);
 
         }
         public void ShowUpdateOptions()

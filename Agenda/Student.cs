@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Agenda
 {
-    public class Alumno
+    public class Student
     {
         public int DNI { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Street { get; set; }
-        public int Phone { get; set; }
-        public long CellularNumber { get; set; }
+        public string Phone { get; set; }
+        public string CellularNumber { get; set; }
         public int Age { get; set; }
         public DateTime BirthDate{ get; set; }
         public string IdFacebook { get; set; }
@@ -23,8 +23,8 @@ namespace Agenda
         public string Mail { get; set; }
         public bool Active { get; set; }
 
-        public Alumno() {}
-        public Alumno(int DNI, string Name, string Surname,string Street,int Phone,int CellularPhone, int Age ,DateTime BirthDate, string IdFacebook, string IdTwitter, string IdInstagram, string Mail)
+        public Student() {}
+        public Student(int DNI, string Name, string Surname,string Street,string Phone, string CellularPhone, int Age ,DateTime BirthDate, string IdFacebook, string IdTwitter, string IdInstagram, string Mail)
         {
             this.DNI = DNI;
             this.Name = Name;
@@ -82,17 +82,17 @@ namespace Agenda
         {
             return this.Street;
         }
-        public void SetPhone(int Phone)
+        public void SetPhone(string Phone)
         {
             this.Phone = Phone;
         }
-        public int GetPhone()
+        public string GetPhone()
         { return this.Phone;}
-        public void SetCellularNumber(long Number)
+        public void SetCellularNumber(string Number)
         {
             this.CellularNumber = Number;
         }
-        public long GetCellularNumber()
+        public string GetCellularNumber()
         {
            return this.CellularNumber;
         }

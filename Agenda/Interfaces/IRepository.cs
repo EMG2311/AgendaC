@@ -8,11 +8,11 @@ namespace Agenda.Interfaces
 {
     internal interface IRepository
     {
-        void SaveAlumno(Alumno alumno);
-        Alumno updateAlumno(Alumno alumno);
-        List<Alumno> ListAlumnos();
-        Alumno ShowAlumno(int dni);
-        bool DeleteAlumno(int dni);
+        void SaveStudent(Student Student);
+        Student updateStudent(Student Student);
+        List<Student> ListStudents();
+        Student ShowStudent(int dni);
+        bool DeleteStudent(int dni);
 
     }
 }
