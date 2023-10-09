@@ -118,7 +118,21 @@ namespace Agenda
             DateTime FechaMax = FechaMin.AddYears(-150); //valido que la fecha de nacimiento tambien este entre 150 años antes y 0 años antes igual que la edad
             if(BirthDate>= FechaMax && BirthDate <= FechaMin)
             {
-                this.BirthDate = BirthDate;
+                int ageAux = DateTime.Now.Year - BirthDate.Year;
+
+                if(DateTime.Now.Month< BirthDate.Month) //me fijo si este año hubiera cumplido ya años.
+                {
+                    ageAux = ageAux - 1;
+                }
+
+                if (ageAux == this.Age)  //valido que la edad del alumno concuerde con la fecha de nacimiento del mismo
+                {
+                    this.BirthDate= BirthDate;
+                }
+                else
+                {
+                   throw new ArgumentException();
+                }
             }
             else
             {

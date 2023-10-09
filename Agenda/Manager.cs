@@ -26,6 +26,9 @@ namespace Agenda
             } while (FlagProgram);
          }
 
+        /// <summary>
+        /// Metodo que analiza la opcion que se ingreso y distribuye el camino dependiendo la opcion ingresada
+        /// </summary>
         private void StartProgram()
         {
             this.Options();
@@ -60,6 +63,10 @@ namespace Agenda
 
         }
 
+        /// <summary>
+        /// Metodo que lee y valida la opcion ingresada en el apartado de inicio de programa
+        /// 
+        /// </summary>
         private void Options()
         {
            
@@ -78,11 +85,13 @@ namespace Agenda
                 }
                 if (Option < 1 || Option > 6)
                 {
-                    Presenter.IncorrectOption();
+                    Presenter.ShowMessageCustom("Se ingreso una opcion incorrecta");
                 }
             } while (Option < 1 || Option > 6);
         }
-
+        /// <summary>
+        /// Motodo que se usa para crear alumno
+        /// </summary>
         private void CreateStudent()
         {
             try
@@ -111,6 +120,11 @@ namespace Agenda
 
 
         }
+
+        /// <summary>
+        /// Pide que se ingrese el dni de un alumno y lo muestra por pantalla
+        /// </summary>
+        /// <returns></returns>
         private Student ShowStudent()
         {
             bool flag = true;
@@ -141,6 +155,11 @@ namespace Agenda
             }
             
         }
+        /// <summary>
+        /// Metodo que actualiza alumno.(utiliza el metodo ShowStudent() para pedir y extraer el estudiante)
+        /// utiliza el metodo UpdateOptions() para mostrar las opciones y pedir que ingrese la que desee
+        /// Luego dependiendo la opcion es lo que realiza.
+        /// </summary>
         private void UpdateStudent() 
         {
             Student Student = ShowStudent();
@@ -171,12 +190,12 @@ namespace Agenda
                         break;
                     case 4:
                         Presenter.ShowMessageCustom("Ingrese el telefono fijo nuevo");
-                        Reader.ReadCellularNumberPhone(Student);
+                        Reader.ReadCellularNumberPhone(Student,0);
                         Presenter.DeleteConsole();
                         break;
                     case 5:
                         Presenter.ShowMessageCustom("Ingrese el celular nuevo");
-                        Reader.ReadCellularNumberPhone(Student);
+                        Reader.ReadCellularNumberPhone(Student,1);
                         Presenter.DeleteConsole();
                         break;
                     case 6:
@@ -229,7 +248,10 @@ namespace Agenda
 
         
         }
-
+        /// <summary>
+        /// Lee y valida que la opcion ingresada para el apartado de actualizacion sea correcto
+        /// </summary>
+        /// <returns>Devuelve la opcion ingresada ya validada</returns>
         private int UpdateOptions()
         {
             int option=0;
@@ -253,6 +275,9 @@ namespace Agenda
             }while (!(option>0 && option<13));
             return option;
         }
+        /// <summary>
+        /// Metodo que elimina virtualmente un alumno
+        /// </summary>
         private void DeleteStudent()
         {
             Student Student = ShowStudent();
@@ -273,6 +298,9 @@ namespace Agenda
             } 
 
         }
+        /// <summary>
+        /// Metodo que lista todos los alumnos activos
+        /// </summary>
         private void ListStudents()
         {
             try
@@ -297,7 +325,7 @@ namespace Agenda
         }
 
         /// <summary>
-        /// Metodo encargado de pedir y cargar los datos del Student pasado por parametro
+        /// Metodo encargado de pedir y cargar los datos del alumno pasado por parametro
         /// </summary>
         /// <param name="Student"></param>
         /// <returns></returns>
@@ -317,8 +345,8 @@ namespace Agenda
             Reader.ReadDNI(Student);
             Presenter.ShowMessageCustom("Ingrese la direccion");
             Student.SetStreet(Reader.ReadString());
-            Reader.ReadCellularNumberPhone(Student);
-            Reader.ReadCellularNumberPhone(Student);
+            Reader.ReadCellularNumberPhone(Student,0);
+            Reader.ReadCellularNumberPhone(Student,1);
             Reader.ReadAge(Student);
             Reader.ReadBirthDate(Student);
             

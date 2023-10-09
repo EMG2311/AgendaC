@@ -93,9 +93,21 @@ namespace Agenda
         }
 
  
-
-        public void ReadCellularNumberPhone(Student Student)
+        /// <summary>
+        /// Metodo que lee y valida que el numero sea de celular o de telefono fijo
+        /// </summary>
+        /// <param name="Student"></param>
+        public void ReadCellularNumberPhone(Student Student, int option)
         {
+            string PhoneCellular=string.Empty;
+            if (option == 0)
+            {
+                PhoneCellular = "telefono fijo";
+            }
+            else if (option == 1)
+            {
+                PhoneCellular = "celular";
+            }
             bool FlagNum = true;
             string number;
             Regex regex = new Regex("\\A[0-9]{7,10}\\z");
@@ -104,7 +116,7 @@ namespace Agenda
             {
                 try
                 {
-                    Presenter.ShowMessageCustom("Ingrese el numero de celular");
+                    Presenter.ShowMessageCustom("Ingrese el numero de "+ PhoneCellular);
                     number = this.ReadString();
                     match = regex.Match(number);
                     if (!match.Success)

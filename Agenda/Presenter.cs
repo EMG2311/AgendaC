@@ -19,12 +19,9 @@ namespace Agenda
             Console.WriteLine("||     4. Eliminar alumno           ||");
             Console.WriteLine("||     5. Listar alumno             ||");
             Console.WriteLine("||     6. Salir del programa        ||");
-            Console.WriteLine("-------------------------------------"); ;
+            Console.WriteLine("-------------------------------------");
         }
-        public void IncorrectOption()
-        {
-            Console.WriteLine("Se ingreso una opcion incorrecta");
-        }
+     
         public void ShowMessageCustom(String Message) {
             Console.WriteLine(Message);
         }
@@ -43,7 +40,7 @@ namespace Agenda
             Console.WriteLine("||      " +"Phone: " + Student.Phone);
             Console.WriteLine("||      " + "Cellular: "+ Student.CellularNumber);
             Console.WriteLine("||      " + "Edad: "+ Student.Age);
-            Console.WriteLine("||      " + "Fecha de nacimiento: "+ Student.BirthDate);
+            Console.WriteLine("||      " + "Fecha de nacimiento: "+ Student.BirthDate.ToString("dd/MM/yyyy"));
             Console.WriteLine("||      " + "Id Facebook:"+ Student.IdFacebook);
             Console.WriteLine("||      " + "Id twitter: "+ Student.IdTwitter);
             Console.WriteLine("||      " +"Id Instagram: " + Student.IdInstagram);
