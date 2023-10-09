@@ -107,10 +107,6 @@ namespace Agenda.Repository
                             alumnoAux = alumno;
                         }
                     }
-                    if (alumnoAux==null)
-                    {
-
-                    }
                     reader.Close();
                     return alumnoAux;
                 }
@@ -120,7 +116,7 @@ namespace Agenda.Repository
                 return null;
             }
 
-            return null;
+            
         }
 
         public Alumno updateAlumno(Alumno alumno)
@@ -128,10 +124,11 @@ namespace Agenda.Repository
             using (StreamReader reader = new StreamReader(FilePath))
             {
                 string record = string.Empty;
-                while ((record = reader.ReadLine()) != null)
+                using (StreamWriter writer = new StreamWriter(TempFilePath))
+                { 
+                    while ((record = reader.ReadLine()) != null)
                 {
-                    using (StreamWriter writer = new StreamWriter(TempFilePath))
-                    {
+                    
                         Alumno Alumno1 = JsonConvert.DeserializeObject<Alumno>(record);
 
                         if (alumno.DNI == Alumno1.DNI && Alumno1.Active==true)
@@ -144,8 +141,9 @@ namespace Agenda.Repository
                             writer.WriteLine(record);
                         }
 
-                        writer.Close();
+                        
                     }
+                    writer.Close();
                 }
 
                 reader.Close();
@@ -155,6 +153,7 @@ namespace Agenda.Repository
                 {
                     RenameFile();
                 }
+
             }
 
             return alumno;
@@ -227,7 +226,7 @@ namespace Agenda.Repository
 
     private void RenameFile()
     {
-        File.Move(TempFilePath, FilePath);
+        File.Move(TempFilePath, FilePath,true);
     }
 }
 }
